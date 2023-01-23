@@ -1,5 +1,5 @@
 services:
-    mongo:
+    mongo_6:
         container_name: '${APP_NAME_INTERNAL}_mongo'
         image: mongo:${MONGO_VERSION}
         volumes:

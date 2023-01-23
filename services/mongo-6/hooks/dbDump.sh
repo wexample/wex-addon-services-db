@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mongoDbDump() {
+mongo6DbDump() {
   local DUMP_NAME="${1}"
 
   _wexLog "Mongo : dumping data to ${DUMP_NAME}..."

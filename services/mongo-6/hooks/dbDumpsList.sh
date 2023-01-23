@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mongoDbDumpsList() {
+mongo6DbDumpsList() {
   local FILES
   FILES=$(find "${WEX_DIR_APP_MONGO_DUMPS}" -maxdepth  1 -exec basename {} \;)
 

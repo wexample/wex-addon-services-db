@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mongoDbRestore() {
+mongo6DbRestore() {
   local DUMP="${1}"
   local DUMP_DIR="${DUMP}"
 
