@@ -1,0 +1,18 @@
+services:
+    maria_10:
+        container_name: '${APP_NAME_INTERNAL}_maria'
+        image: mariadb:${MARIA_VERSION}
+        environment:
+            - MYSQL_ROOT_HOST=%
+            - MYSQL_PASSWORD=${MYSQL_DB_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
+            - MYSQL_USER=${MYSQL_DB_USER}
+        volumes:
+            - ${APP_PATH_WEX}maria/data:/var/lib/mysql
+            - ${APP_PATH_WEX}maria/dumps:/var/www/dumps
+#            - ${APP_PATH_WEX}tmp/mysql.cnf:/etc/mysql/conf.d/app.cnf
+        extends:
+            file: ${WEX_COMPOSE_YML_DEFAULT}
+            service: default
+        ports:
+          - 3306:3306

@@ -7,7 +7,6 @@ mysql8AppConfig() {
 
   _wexLog "MySql : set DB_CONTAINER"
   wex app::config/setValue -k=DB_CONTAINER -v="mysql8"
-  wex app::config/setValue -k=MYSQL_DB_PASSWORD -v="testPass"
 
   local MYSQL_DB_HOST
   local MYSQL_DB_NAME
