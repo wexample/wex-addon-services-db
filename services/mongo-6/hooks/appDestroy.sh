@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-maria10AppDestroy() {
+mongo6AppDestroy() {
   _wexDbDestroy
 }
