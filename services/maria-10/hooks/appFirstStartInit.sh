@@ -11,7 +11,4 @@ maria10AppFirstStartInit() {
 
   _wexLog "Maria : Flushing privileges"
   wex db/exec -v -c="FLUSH PRIVILEGES"
-
-  _wexLog "Maria : Creating default database '${APP_NAME}'"
-  wex db/exec -v -c="CREATE DATABASE ${APP_NAME}"
 }

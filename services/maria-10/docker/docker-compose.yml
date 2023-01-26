@@ -5,12 +5,13 @@ services:
         environment:
             - MYSQL_ROOT_HOST=%
             - MYSQL_PASSWORD=${MYSQL_DB_PASSWORD}
+            - MYSQL_DATABASE=${APP_NAME}
             - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
             - MYSQL_USER=${MYSQL_DB_USER}
         volumes:
             - ${APP_PATH_WEX}maria/data:/var/lib/mysql
             - ${APP_PATH_WEX}maria/dumps:/var/www/dumps
-            - ${APP_PATH_WEX}tmp/mysql.cnf:/etc/mysql/conf.d/app.cnf
+            - ${APP_PATH_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
         extends:
             file: ${WEX_COMPOSE_YML_DEFAULT}
             service: default
