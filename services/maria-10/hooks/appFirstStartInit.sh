@@ -7,11 +7,11 @@ maria10AppFirstStartInit() {
   sleep 5
 
   _wexLog "Maria : Granting all permissions to root"
-  wex app/exec -n=maria -c="mysql -uroot -p"${MYSQL_DB_PASSWORD}" -e 'GRANT ALL PRIVILEGES ON *.* TO root@localhost WITH GRANT OPTION;'"
+  wex db/exec -v -c="GRANT ALL PRIVILEGES ON *.* TO root@localhost WITH GRANT OPTION"
 
   _wexLog "Maria : Flushing privileges"
-  wex app/exec -n=maria -c="mysql -uroot -p"${MYSQL_DB_PASSWORD}" -e 'FLUSH PRIVILEGES;'"
+  wex db/exec -v -c="FLUSH PRIVILEGES"
 
-  _wexLog "Maria : Creating default database '${NAME}'"
-  wex app/exec -n=maria -c="mysql -uroot -p"${MYSQL_DB_PASSWORD}" -e 'CREATE DATABASE ${NAME};'"
+  _wexLog "Maria : Creating default database '${APP_NAME}'"
+  wex db/exec -v -c="CREATE DATABASE ${APP_NAME}"
 }

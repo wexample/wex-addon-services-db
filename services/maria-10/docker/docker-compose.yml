@@ -10,7 +10,7 @@ services:
         volumes:
             - ${APP_PATH_WEX}maria/data:/var/lib/mysql
             - ${APP_PATH_WEX}maria/dumps:/var/www/dumps
-#            - ${APP_PATH_WEX}tmp/mysql.cnf:/etc/mysql/conf.d/app.cnf
+            - ${APP_PATH_WEX}tmp/mysql.cnf:/etc/mysql/conf.d/app.cnf
         extends:
             file: ${WEX_COMPOSE_YML_DEFAULT}
             service: default
