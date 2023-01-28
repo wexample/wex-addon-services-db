@@ -1,17 +1,15 @@
 services:
     mysql_8:
-        container_name: '${APP_NAME_INTERNAL}_${DB_CONTAINER}'
-        image: 'wexample/mysql8:latest'
+        container_name: '${APP_NAME_INTERNAL}_mysql'
+        image: mysql:8.0.32
         environment:
-            - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DB_NAME}
-            - MYSQL_USER=root
             - MYSQL_PASSWORD=${MYSQL_DB_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
         volumes:
-            - ${APP_PATH_WEX}/mysql/data:/var/lib/mysql
-            - ${APP_PATH_WEX}/mysql/dumps:/var/www/dumps
-            - ${APP_PATH_WEX}/tmp:/var/www/tmp
-            - ${APP_PATH_ROOT}/tmp/mysql.cnf:/tmp/mysql.cnf
+            - ${APP_PATH_WEX}mysql/data:/var/lib/mysql
+            - ${APP_PATH_WEX}mysql/dumps:/var/www/dumps
+            - ${APP_PATH_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
         extends:
             file: ${WEX_COMPOSE_YML_DEFAULT}
             service: default

@@ -17,4 +17,3 @@ services:
             service: default
         ports:
           - 3306:3306
-        user: ${APP_USER_UID}

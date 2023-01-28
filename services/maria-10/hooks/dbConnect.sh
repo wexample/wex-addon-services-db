@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 maria10DbConnect() {
-  echo "--defaults-extra-file=/tmp/mysql.cnf"
+  wex service/exec -sf=mysql-8 -c=dbConnect
 }
