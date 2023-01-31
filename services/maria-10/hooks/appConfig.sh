@@ -5,10 +5,6 @@ maria10AppConfig() {
 
   wex config/bindFiles -s=maria -e=cnf.json
 
-  wex app::config/setValue -k=MARIA_VERSION -v="${MARIA_VERSION}"
-
-  wex app::config/setValue -k=DB_CONTAINER -v="maria"
-
   MARIA_DB_HOST=${MARIA_DB_HOST:-"${NAME}_maria_10"}
   MARIA_DB_NAME=${MARIA_DB_NAME:-${NAME}}
   MARIA_DB_PASSWORD=${MARIA_DB_PASSWORD:-${WEX_DEFAULT_INSECURE_PASSWORD}}
