@@ -7,8 +7,10 @@ mysql8DbDump() {
 
   # shellcheck source=dbConnect.sh
   source "${SERVICE_DIR}hooks/dbConnect.sh"
+  # shellcheck source=.wex/tmp/config.build
+  source "${WEX_FILEPATH_REL_CONFIG_BUILD}"
 
-  wex app/exec -n=${DB_CONTAINER} -c="mysqldump $(mysql8DbConnect) ${APP_NAME} > /var/www/dumps/${DUMP_FILE_NAME}"
+  wex app/exec -n="${DB_CONTAINER}" -c="mysqldump $(mysql8DbConnect) ${APP_NAME} > /var/www/dumps/${DUMP_FILE_NAME}"
 
   # Seems some dumps files take a while to be accessible.
   sleep 2
