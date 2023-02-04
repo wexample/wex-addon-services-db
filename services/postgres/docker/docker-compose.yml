@@ -1,0 +1,16 @@
+services:
+    postgres:
+        container_name: '${APP_NAME_INTERNAL}_postgres'
+        image: postgres:${POSTGRES_VERSION}
+        environment:
+          - POSTGRES_DB=${POSTGRES_DB_NAME}
+          - POSTGRES_USER=${POSTGRES_DB_USER}
+          - POSTGRES_PASSWORD=${POSTGRES_DB_PASSWORD}
+          - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+          - ${APP_PATH_WEX}postgres/data:/var/lib/postgresql/data
+          - ${APP_PATH_WEX}postgres/dumps:/var/www/dumps
+        extends:
+            file: ${WEX_COMPOSE_YML_DEFAULT}
+            service: default
+        user: ${APP_USER_UID}
