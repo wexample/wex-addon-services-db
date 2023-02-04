@@ -7,8 +7,8 @@ maria10AppFirstStartInit() {
   sleep 5
 
   _wexLog "Maria : Granting all permissions to root"
-  wex db/exec -v -c="GRANT ALL PRIVILEGES ON *.* TO root@localhost WITH GRANT OPTION"
+  wex db/exec -vv -c="GRANT ALL PRIVILEGES ON *.* TO root@localhost WITH GRANT OPTION"
 
   _wexLog "Maria : Flushing privileges"
-  wex db/exec -v -c="FLUSH PRIVILEGES"
+  wex db/exec -vv -c="FLUSH PRIVILEGES"
 }

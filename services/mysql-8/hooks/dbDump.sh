@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 mysql8DbDump() {
+  . "${WEX_FILEPATH_REL_CONFIG_BUILD}"
+
   local DUMP_NAME="${1}"
   local SERVICE_DIR="$(wex app::service/dir -s="mysql-8")"
   DUMP_FILE_NAME+=".sql"
