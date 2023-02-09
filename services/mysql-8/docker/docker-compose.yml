@@ -13,3 +13,5 @@ services:
         extends:
             file: ${WEX_COMPOSE_YML_DEFAULT}
             service: default
+        ports:
+            - ${MYSQL_DB_PORT}:3306
