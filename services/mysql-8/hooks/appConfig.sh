@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 mysql8AppConfig() {
+  # Need built vars to get mysql port.
+  . "${WEX_FILEPATH_REL_CONFIG_BUILD}"
   . "${WEX_FILEPATH_REL_CONFIG}"
 
   MYSQL_DB_HOST=${MYSQL_DB_HOST:-"${NAME}_mysql_8"}
   MYSQL_DB_NAME=${MYSQL_DB_NAME:-${NAME}}
   MYSQL_DB_PASSWORD=${MYSQL_DB_PASSWORD:-${WEX_DEFAULT_INSECURE_PASSWORD}}
-  MYSQL_DB_PORT=${MYSQL_DB_PORT:-3306}
+  MYSQL_DB_PORT=${MYSQL_DB_PORT:-${SERVICE_PORT_MYSQL_8}}
   MYSQL_DB_USER=${MYSQL_DB_USER:-"root"}
 
   wex app::config/setValue -k=MYSQL_DB_HOST -v="${MYSQL_DB_HOST}"
