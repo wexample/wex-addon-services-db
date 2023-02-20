@@ -3,7 +3,7 @@
 maria10AppConfig() {
   . "${WEX_FILEPATH_REL_CONFIG}"
 
-  wex config/bindFiles -s=maria -e=cnf.json
+  wex-exec config/bindFiles -s=maria -e=cnf.json
 
   MARIA_DB_HOST=${MARIA_DB_HOST:-"${NAME}_maria_10"}
   MARIA_DB_NAME=${MARIA_DB_NAME:-${NAME}}
@@ -11,11 +11,11 @@ maria10AppConfig() {
   MARIA_DB_PORT=${MARIA_DB_PORT:-3306}
   MARIA_DB_USER=${MARIA_DB_USER:-"root"}
 
-  wex app::config/setValue -k=MYSQL_DB_HOST -v="${MARIA_DB_HOST}"
-  wex app::config/setValue -k=MYSQL_DB_NAME -v="${MARIA_DB_NAME}"
-  wex app::config/setValue -k=MYSQL_DB_PASSWORD -v="${MARIA_DB_PASSWORD}"
-  wex app::config/setValue -k=MYSQL_DB_PORT -v="${MARIA_DB_PORT}"
-  wex app::config/setValue -k=MYSQL_DB_USER -v="${MARIA_DB_USER}"
+  wex-exec app::config/setValue -k=MYSQL_DB_HOST -v="${MARIA_DB_HOST}"
+  wex-exec app::config/setValue -k=MYSQL_DB_NAME -v="${MARIA_DB_NAME}"
+  wex-exec app::config/setValue -k=MYSQL_DB_PASSWORD -v="${MARIA_DB_PASSWORD}"
+  wex-exec app::config/setValue -k=MYSQL_DB_PORT -v="${MARIA_DB_PORT}"
+  wex-exec app::config/setValue -k=MYSQL_DB_USER -v="${MARIA_DB_USER}"
 
   _wexLog "Maria : creating cnf file"
   # Create connexion file info

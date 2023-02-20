@@ -11,11 +11,11 @@ mysql8AppConfig() {
   MYSQL_DB_PORT=${MYSQL_DB_PORT:-${SERVICE_PORT_MYSQL_8}}
   MYSQL_DB_USER=${MYSQL_DB_USER:-"root"}
 
-  wex app::config/setValue -k=MYSQL_DB_HOST -v="${MYSQL_DB_HOST}"
-  wex app::config/setValue -k=MYSQL_DB_NAME -v="${MYSQL_DB_NAME}"
-  wex app::config/setValue -k=MYSQL_DB_PASSWORD -v="${MYSQL_DB_PASSWORD}"
-  wex app::config/setValue -k=MYSQL_DB_PORT -v="${MYSQL_DB_PORT}"
-  wex app::config/setValue -k=MYSQL_DB_USER -v="${MYSQL_DB_USER}"
+  wex-exec app::config/setValue -k=MYSQL_DB_HOST -v="${MYSQL_DB_HOST}"
+  wex-exec app::config/setValue -k=MYSQL_DB_NAME -v="${MYSQL_DB_NAME}"
+  wex-exec app::config/setValue -k=MYSQL_DB_PASSWORD -v="${MYSQL_DB_PASSWORD}"
+  wex-exec app::config/setValue -k=MYSQL_DB_PORT -v="${MYSQL_DB_PORT}"
+  wex-exec app::config/setValue -k=MYSQL_DB_USER -v="${MYSQL_DB_USER}"
 
   _wexLog "MySql : creating cnf file"
   # Create connexion file info

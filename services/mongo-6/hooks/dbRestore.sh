@@ -20,7 +20,7 @@ mongo6DbRestore() {
 
   if [ -d "${DUMP_DIR}" ];then
     _wexLog "Mongo : Restoring ${DUMP_DIR}..."
-    wex app/exec -n=mongo -c="mongorestore --drop /dump/${DUMP_DIR}"
+    wex-exec app/exec -n=mongo -c="mongorestore --drop /dump/${DUMP_DIR}"
   fi
 
   cd "${DIR_CURRENT}"
