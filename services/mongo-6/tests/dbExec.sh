@@ -6,7 +6,8 @@ mongo6DbExecTest() {
   local STATUS
   STATUS=$(wex db/exec -c="rs.status()")
 
-  ${STATUS}
+  _wexLog "Status : ${STATUS}"
+  echo "${STATUS}"
 
   wex app/stop
 }
