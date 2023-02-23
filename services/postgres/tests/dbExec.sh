@@ -2,7 +2,6 @@
 
 postgresDbExecTest() {
   . "${WEX_FILEPATH_REL_CONFIG_BUILD}"
-  wex-exec app::app/start
 
   _wexLog "Waiting for PostGre to start..."
   sleep 5
@@ -26,6 +25,4 @@ postgresDbExecTest() {
   fi
 
   _wexTestAssertEqual "${SUCCESS}" "true"
-
-  wex-exec app::app/stop
 }

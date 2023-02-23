@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 mysql8DbExecTest() {
-  wex-exec app::app/start
-
   _wexLog "Waiting for database to be ready..."
   sleep 5
 
@@ -30,6 +28,4 @@ mysql8DbExecTest() {
   done
 
   _wexTestAssertEqual "${SUCCESS}" "true"
-
-  wex-exec app::app/stop
 }
