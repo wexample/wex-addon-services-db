@@ -3,10 +3,13 @@
 mysql8DbExecTest() {
   wex-exec app::app/start
 
+  _wexLog "Waiting for database to be ready..."
+  sleep 5
+
   local TABLES=()
   while [[ ${#TABLES[@]} -lt 5 ]]
   do
-      _wexLog "Waiting for database to be ready..."
+      _wexLog "Waiting creating all tables..."
       printf "${TABLES[*]}"
       sleep 1
 
