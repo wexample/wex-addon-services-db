@@ -6,5 +6,6 @@ mysql8DbExec() {
   # shellcheck source=dbConnect.sh
   source "${SERVICE_DIR}hooks/dbGo.sh"
 
-  echo "$(mysql8DbGo) -s -N ${APP_NAME} -e '${1}'"
+  # Change the end of line to avoid array splitting issues.
+  echo "$(mysql8DbGo) -s -N ${APP_NAME} -e '${1}'" | tr -d '\r'
 }

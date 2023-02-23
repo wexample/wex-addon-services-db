@@ -9,6 +9,9 @@ mysql8DbExecTest() {
   local OUTPUT
   OUTPUT=($(wex-exec db/exec -c="SHOW DATABASES"))
 
+  _wexLog "Database tables :"
+  printf "${OUTPUT[*]}"
+
   local SUCCESS=false
   if [[ " ${OUTPUT[*]} " =~ " information_schema " ]] && \
      [[ " ${OUTPUT[*]} " =~ " mysql " ]] && \
@@ -16,9 +19,6 @@ mysql8DbExecTest() {
      [[ " ${OUTPUT[*]} " =~ " sys " ]]; then
       SUCCESS=true
   fi
-
-  _wexLog "Database tables :"
-  printf "${OUTPUT[*]}"
 
   _wexTestAssertEqual "${SUCCESS}" "true"
 
