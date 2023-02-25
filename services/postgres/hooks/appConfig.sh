@@ -17,5 +17,5 @@ postgresAppConfig() {
   wex-exec app::config/setValue -k=POSTGRES_DB_PORT -v="${POSTGRES_DB_PORT}"
   wex-exec app::config/setValue -k=POSTGRES_DB_USER -v="${POSTGRES_DB_USER}"
 
-  echo "*:*:*:${POSTGRES_DB_NAME}:${POSTGRES_DB_PASSWORD}" > "${WEX_DIR_APP_TMP}.pgpass"
+  echo "*:*:*:${POSTGRES_DB_NAME}:${POSTGRES_DB_PASSWORD}" >"${WEX_DIR_APP_TMP}.pgpass"
 }

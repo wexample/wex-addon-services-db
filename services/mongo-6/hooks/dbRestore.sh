@@ -8,17 +8,17 @@ mongo6DbRestore() {
   cd "${WEX_DIR_APP_MONGO_DUMPS}"
 
   # Zip file.
-  if [ -f "${DUMP}" ];then
+  if [ -f "${DUMP}" ]; then
     DUMP_DIR=$(basename "${DUMP%.*}")
 
     # Not already extracted.
-    if [ ! -d "${DUMP_DIR}" ];then
+    if [ ! -d "${DUMP_DIR}" ]; then
       _wexLog "Mongo : Unpacking ${DUMP}..."
       unzip "${DUMP}"
     fi
   fi
 
-  if [ -d "${DUMP_DIR}" ];then
+  if [ -d "${DUMP_DIR}" ]; then
     _wexLog "Mongo : Restoring ${DUMP_DIR}..."
     wex-exec app/exec -n=mongo -c="mongorestore --drop /dump/${DUMP_DIR}"
   fi

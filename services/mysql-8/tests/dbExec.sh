@@ -5,13 +5,12 @@ mysql8DbExecTest() {
   sleep 5
 
   local TABLES=()
-  while [[ ${#TABLES[@]} -lt 5 ]]
-  do
-      _wexLog "Waiting creating all tables..."
-      printf "${TABLES[*]}"
-      sleep 1
+  while [[ ${#TABLES[@]} -lt 5 ]]; do
+    _wexLog "Waiting creating all tables..."
+    printf "${TABLES[*]}"
+    sleep 1
 
-      TABLES=($(wex-exec db/exec -c="SHOW DATABASES"))
+    TABLES=($(wex-exec db/exec -c="SHOW DATABASES"))
   done
 
   _wexLog "Database tables :"

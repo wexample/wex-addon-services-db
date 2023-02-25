@@ -15,12 +15,12 @@ postgresDbExecTest() {
   local SUCCESS=true
 
   # Should contain a postgres database.
-  if [ "$(echo "${OUTPUT}" | grep "postgres")" = "" ];then
+  if [ "$(echo "${OUTPUT}" | grep "postgres")" = "" ]; then
     SUCCESS=false
   fi
 
   # Should contain a database using app name.
-  if [ "$(echo "${OUTPUT}" | grep "${APP_NAME}")" = "" ];then
+  if [ "$(echo "${OUTPUT}" | grep "${APP_NAME}")" = "" ]; then
     SUCCESS=false
   fi
 

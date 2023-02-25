@@ -13,7 +13,7 @@ postgresDbRestore() {
   # Trim
   DB_COUNT=$(echo "${DB_COUNT}" | tr -dc '0-9')
 
-  if [[ ${DB_COUNT} == "1" ]];then
+  if [[ ${DB_COUNT} == "1" ]]; then
     # Copy SQL command in container.
     docker cp "${SERVICE_DIR}sql/dbDrop.sql" $(wex-exec app/container -c=postgres):/var/www/
     # Run drop command
