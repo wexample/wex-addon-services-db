@@ -6,7 +6,7 @@ mysql8DbExecTest() {
 
   local TABLES=()
   while [[ ${#TABLES[@]} -lt 5 ]]; do
-    _wexLog "Waiting creating all tables..."
+    _wexLog "Waiting until all tables have been created..."
     printf "${TABLES[*]}"
     sleep 1
 
