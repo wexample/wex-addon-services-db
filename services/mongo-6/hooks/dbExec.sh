@@ -6,5 +6,5 @@ mongo6DbExec() {
   # shellcheck source=dbGo.sh
   . "${SERVICE_DIR}hooks/dbGo.sh"
 
-  echo "$(mongo6DbGo) --eval '${1}'"
+  echo "$(mongo6DbGo) --quiet --eval '${1}'"
 }
