@@ -23,5 +23,5 @@ postgresDbRestore() {
   wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -c \"CREATE DATABASE ${APP_NAME}\""
 
   _wexLog "Importing data..."
-  wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect) -f /var/www/dumps/${DUMP}"
+  wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect) -f /var/www/dumps/${DUMP}.sql"
 }
