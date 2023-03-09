@@ -8,35 +8,7 @@ mysql8DbRestoreTest() {
   wex-exec app::db/exec -vv -c="INSERT INTO users (name, email) VALUES (\"John Doe\", \"john.doe@example.com\")"
 
   # Test with zip.
-  _mysql8DbRestoreTestFormat true
+  _serviceInstallTestDbDumpAndREstore true .sql "TRUNCATE users" "SELECT name FROM users LIMIT 0,1"
   # Test without zip.
-  _mysql8DbRestoreTestFormat false
+  _serviceInstallTestDbDumpAndREstore false .sql "TRUNCATE users" "SELECT name FROM users LIMIT 0,1"
 }
-
-_mysql8DbRestoreTestFormat() {
-  local EXT
-  local ZIP=${1}
-
-  if [ "${ZIP}" = "true" ];then
-    EXT=zip
-  else
-    EXT=sql
-  fi
-
-  . "${WEX_FILEPATH_REL_CONFIG_BUILD}"
-
-  # Create dump.
-  wex-exec app::db/dump -f="test-dump" -z="${ZIP}"
-  # Check dump exists.
-  _wexTestFileExists ".wex/${DB_CONTAINER}/dumps/test-dump.${EXT}"
-  # Clear db.
-  wex-exec app::db/exec -vv -c="TRUNCATE users"
-  # Restore dump.
-  wex-exec app::db/restore -f="test-dump.${EXT}"
-  # Check restoration.
-  local USERNAME
-  USERNAME=$(wex-exec app::db/exec -c="SELECT name FROM users LIMIT 0,1")
-
-  _wexTestAssertEqual "${USERNAME}" "John Doe"
-}
-
