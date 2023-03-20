@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "phpmyadmin"
+  ],
+  "tags": [
+    "db"
+  ]
+}
