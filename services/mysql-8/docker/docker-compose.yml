@@ -1,6 +1,6 @@
 services:
     mysql_8:
-        container_name: '${APP_NAME_INTERNAL}_mysql'
+        container_name: '${CONTEXT_NAME}_mysql'
         image: mysql:8.0.32
         environment:
             - MYSQL_DATABASE=${MYSQL_DB_NAME}
@@ -8,9 +8,9 @@ services:
             - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
             - MYSQL_TCP_PORT=${MYSQL_DB_PORT}
         volumes:
-            - ${APP_PATH_WEX}mysql/data:/var/lib/mysql
-            - ${APP_PATH_WEX}mysql/dumps:/var/www/dumps
-            - ${APP_PATH_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
+            - ${CONTEXT_DIR_WEX}mysql/data:/var/lib/mysql
+            - ${CONTEXT_DIR_WEX}mysql/dumps:/var/www/dumps
+            - ${CONTEXT_DIR_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
         extends:
-            file: ${WEX_COMPOSE_YML_DEFAULT}
+            file: ${SERVICE_DEFAULT_YML_ENV}
             service: default

@@ -1,5 +1,5 @@
 services:
   mongo_6:
     extends:
-      file: ${WEX_COMPOSE_YML_MONGO_6}
+      file: ${SERVICE_MONGO_6_YML_ENV}
       service: mongo_6

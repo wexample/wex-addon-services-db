@@ -9,7 +9,7 @@ postgresDbRestore() {
   # shellcheck source=dbConnect.sh
   source "${SERVICE_DIR}hooks/dbConnect.sh"
 
-  local DB_COUNT=$(wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -XtAc \"SELECT 1 FROM pg_database WHERE datname='${APP_NAME}'\"")
+  local DB_COUNT=$(wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -XtAc \"SELECT 1 FROM pg_database WHERE datname='${GLOBAL_NAME}'\"")
   # Trim
   DB_COUNT=$(echo "${DB_COUNT}" | tr -dc '0-9')
 
@@ -17,10 +17,10 @@ postgresDbRestore() {
     # Copy SQL command in container.
     docker cp "${SERVICE_DIR}sql/dbDrop.sql" $(wex-exec app/container -c=postgres):/var/www/
     # Run drop command
-    wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -v db_name=${APP_NAME} -v db_name_escaped=\"'${APP_NAME}'\" -f /var/www/dbDrop.sql"
+    wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -v db_name=${GLOBAL_NAME} -v db_name_escaped=\"'${GLOBAL_NAME}'\" -f /var/www/dbDrop.sql"
   fi
 
-  wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -c \"CREATE DATABASE ${APP_NAME}\""
+  wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect postgres) -c \"CREATE DATABASE ${GLOBAL_NAME}\""
 
   _wexLog "Importing data..."
   wex-exec app/exec -n=postgres -c="psql $(postgresDbConnect) -f /var/www/dumps/${DUMP}.sql"

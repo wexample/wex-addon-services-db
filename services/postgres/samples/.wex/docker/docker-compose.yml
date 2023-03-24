@@ -1,5 +1,5 @@
 services:
   postgres:
     extends:
-      file: ${WEX_COMPOSE_YML_POSTGRES}
+      file: ${SERVICE_POSTGRES_YML_ENV}
       service: postgres

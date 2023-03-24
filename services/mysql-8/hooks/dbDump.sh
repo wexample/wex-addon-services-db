@@ -10,7 +10,7 @@ mysql8DbDump() {
   # shellcheck source=dbConnect.sh
   source "${SERVICE_DIR}hooks/dbConnect.sh"
 
-  wex-exec app/exec -n="${DB_CONTAINER}" -c="mysqldump $(mysql8DbConnect) ${APP_NAME} > /var/www/dumps/${DUMP_FILE_NAME}"
+  wex-exec app/exec -n="${DB_CONTAINER}" -c="mysqldump $(mysql8DbConnect) ${GLOBAL_NAME} > /var/www/dumps/${DUMP_FILE_NAME}"
 
   echo "${WEX_DIR_APP_DATA}${DB_CONTAINER}/dumps/${DUMP_FILE_NAME}"
 }

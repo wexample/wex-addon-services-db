@@ -1,5 +1,5 @@
 services:
   maria_10:
     extends:
-      file: ${WEX_COMPOSE_YML_MARIA_10}
+      file: ${SERVICE_MARIA_10_YML_ENV}
       service: maria_10

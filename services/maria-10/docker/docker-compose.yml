@@ -1,19 +1,19 @@
 services:
     maria_10:
-        container_name: '${APP_NAME_INTERNAL}_maria'
+        container_name: '${CONTEXT_NAME}_maria'
         image: mariadb:${MARIA_VERSION}
         environment:
             - MYSQL_ROOT_HOST=%
             - MYSQL_PASSWORD=${MYSQL_DB_PASSWORD}
-            - MYSQL_DATABASE=${APP_NAME}
+            - MYSQL_DATABASE=${GLOBAL_NAME}
             - MYSQL_ROOT_PASSWORD=${MYSQL_DB_PASSWORD}
             - MYSQL_USER=${MYSQL_DB_USER}
         volumes:
-            - ${APP_PATH_WEX}maria/data:/var/lib/mysql
-            - ${APP_PATH_WEX}maria/dumps:/var/www/dumps
-            - ${APP_PATH_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
+            - ${CONTEXT_DIR_WEX}maria/data:/var/lib/mysql
+            - ${CONTEXT_DIR_WEX}maria/dumps:/var/www/dumps
+            - ${CONTEXT_DIR_WEX}tmp/mysql.cnf:/tmp/mysql.cnf
         extends:
-            file: ${WEX_COMPOSE_YML_DEFAULT}
+            file: ${SERVICE_DEFAULT_YML_ENV}
             service: default
         ports:
             - ${MYSQL_DB_PORT}:3306

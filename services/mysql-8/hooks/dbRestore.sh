@@ -14,5 +14,5 @@ mysql8DbRestore() {
   # shellcheck source=.wex/tmp/config.build
   source "${WEX_FILEPATH_REL_CONFIG_BUILD}"
 
-  wex-exec app/exec -n="${DB_CONTAINER}" -c="mysql $(mysql8DbConnect) ${APP_NAME} < /var/www/dumps/${DUMP}.sql"
+  wex-exec app/exec -n="${DB_CONTAINER}" -c="mysql $(mysql8DbConnect) ${GLOBAL_NAME} < /var/www/dumps/${DUMP}.sql"
 }

@@ -1,5 +1,5 @@
 services:
   mysql_8:
     extends:
-      file: ${WEX_COMPOSE_YML_MYSQL_8}
+      file: ${SERVICE_MYSQL_8_YML_ENV}
       service: mysql_8

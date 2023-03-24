@@ -20,7 +20,7 @@ postgresDbExecTest() {
   fi
 
   # Should contain a database using app name.
-  if [ "$(echo "${OUTPUT}" | grep "${APP_NAME}")" = "" ]; then
+  if [ "$(echo "${OUTPUT}" | grep "${GLOBAL_NAME}")" = "" ]; then
     SUCCESS=false
   fi
 

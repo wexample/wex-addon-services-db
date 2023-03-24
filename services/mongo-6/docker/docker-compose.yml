@@ -1,11 +1,11 @@
 services:
     mongo_6:
-        container_name: '${APP_NAME_INTERNAL}_mongo'
+        container_name: '${CONTEXT_NAME}_mongo'
         image: mongo:${MONGO_VERSION}
         volumes:
-          - ${APP_PATH_WEX}mongo/data:/data/db
-          - ${APP_PATH_WEX}mongo/dumps:/dump
+          - ${CONTEXT_DIR_WEX}mongo/data:/data/db
+          - ${CONTEXT_DIR_WEX}mongo/dumps:/dump
         command: mongod --oplogSize 128 --replSet rs0 --storageEngine=wiredTiger --bind_ip_all --port 27017
         extends:
-            file: ${WEX_COMPOSE_YML_DEFAULT}
+            file: ${SERVICE_DEFAULT_YML_ENV}
             service: default
