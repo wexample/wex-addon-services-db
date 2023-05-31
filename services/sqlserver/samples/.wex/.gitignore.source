@@ -1,0 +1,3 @@
+# PostGreSQL dumps
+/sqlserver/data/*
+/sqlserver/dumps/*

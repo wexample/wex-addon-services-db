@@ -1,0 +1,16 @@
+services:
+    sqlserver:
+        container_name: '${APP_NAME_INTERNAL}_sqlserver'
+        image: mcr.microsoft.com/mssql/server:${SQLSERVER_VERSION}
+        environment:
+          - MSSQL_SA_PASSWORD=${SQLSERVER_DB_PASSWORD}
+          - PGDATA=/var/lib/sqlserverql/data/pgdata
+          - ACCEPT_EULA='Y'
+        volumes:
+          - ${APP_PATH_WEX}sqlserver/mssql:/var/opt/mssql
+          - ${APP_PATH_WEX}sqlserver/data:/var/opt/sqlserver/data
+          - ${APP_PATH_WEX}sqlserver/log:/var/opt/sqlserver/log
+          - ${APP_PATH_WEX}sqlserver/backup:/var/opt/sqlserver/backup
+        extends:
+            file: ${WEX_COMPOSE_YML_DEFAULT}
+            service: default
